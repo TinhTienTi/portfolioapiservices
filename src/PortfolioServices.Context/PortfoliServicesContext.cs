@@ -17,6 +17,7 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<Categories> Categories { get; set; }
     public virtual DbSet<Home> Homes { get; set; }
     public virtual DbSet<Language> Languages { get; set; }
+    public virtual DbSet<About> Abouts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -63,6 +64,16 @@ public partial class PortfoliServicesContext : DbContext
             entity.Property(e => e.Object)
                 .HasMaxLength(30)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<About>(entity =>
+        {
+            entity.ToTable("About");
+
+            entity.HasKey(e => e.Tid)
+                .HasName("PK__About__C451DB316FD4FD35");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
         });
 
         OnModelCreatingPartial(modelBuilder);

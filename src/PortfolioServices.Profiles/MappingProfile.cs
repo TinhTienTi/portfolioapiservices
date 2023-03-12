@@ -19,5 +19,8 @@ public class MappingProfile : Profile
 
         CreateMap<Language, LanguageDto>();
         CreateMap<LanguageDto, Language>();
+
+        CreateMap<About, AboutDto>();
+        CreateMap<AboutDto, About>();
     }
 }

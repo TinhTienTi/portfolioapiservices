@@ -35,6 +35,7 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<IGenericRepository<Home, HomeDto>, GenericRepository<Home, HomeDto>>();
             services.AddScoped<IGenericRepository<Language, LanguageDto>, GenericRepository<Language, LanguageDto>>();
             services.AddScoped<IGenericRepository<Categories, CategoriesDto>, GenericRepository<Categories, CategoriesDto>>();
+            services.AddScoped<IGenericRepository<About, AboutDto>, GenericRepository<About, AboutDto>>();
         }
 
         private static void AddBo(this IServiceCollection services)
@@ -42,6 +43,7 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<IHomeBo, HomeBo>();
             services.AddScoped<ILanguageBo, LanguageBo>();
             services.AddScoped<ICategoryBo, CategoryBo>();
+            services.AddScoped<IAboutBo, AboutBo>();
 
             services.AddScoped<IProfileBo, ProfileBo>();
         }
