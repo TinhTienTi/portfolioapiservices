@@ -1,6 +1,6 @@
 ﻿namespace PortfolioServices.Dto;
 
-public class AboutDto
+public class ServiceDto
 {
     public Guid Tid { get; set; }
     public DateTimeOffset? CreatedAt { get; set; }

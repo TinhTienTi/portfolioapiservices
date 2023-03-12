@@ -18,6 +18,8 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<Home> Homes { get; set; }
     public virtual DbSet<Language> Languages { get; set; }
     public virtual DbSet<About> Abouts { get; set; }
+    public virtual DbSet<ImageUtilities> ImageUtilities { get; set; }
+    public virtual DbSet<Service> Service { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -75,6 +77,27 @@ public partial class PortfoliServicesContext : DbContext
 
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
         });
+
+        modelBuilder.Entity<ImageUtilities>(entity =>
+        {
+            entity.ToTable("ImageUtilities");
+
+            entity.HasKey(e => e.Tid)
+                .HasName("PK__ImageUti__C451DB314368339E");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
+
+        modelBuilder.Entity<Service>(entity =>
+        {
+            entity.ToTable("Service");
+
+            entity.HasKey(e => e.Tid)
+                .HasName("PK__Service__C451DB3116E848A2");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }
