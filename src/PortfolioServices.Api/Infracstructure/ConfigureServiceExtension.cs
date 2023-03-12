@@ -36,6 +36,8 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<IGenericRepository<Language, LanguageDto>, GenericRepository<Language, LanguageDto>>();
             services.AddScoped<IGenericRepository<Categories, CategoriesDto>, GenericRepository<Categories, CategoriesDto>>();
             services.AddScoped<IGenericRepository<About, AboutDto>, GenericRepository<About, AboutDto>>();
+            services.AddScoped<IGenericRepository<ImageUtilities, ImageUtilitiesDto>, GenericRepository<ImageUtilities, ImageUtilitiesDto>>();
+            services.AddScoped<IGenericRepository<Service, ServiceDto>, GenericRepository<Service, ServiceDto>>();
         }
 
         private static void AddBo(this IServiceCollection services)
