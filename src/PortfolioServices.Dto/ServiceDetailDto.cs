@@ -2,7 +2,7 @@
 
 namespace PortfolioServices.Dto;
 
-public class ServiceDto
+public class ServiceDetailDto
 {
 
     [DataMember]
@@ -13,4 +13,13 @@ public class ServiceDto
 
     [DataMember]
     public DateTimeOffset? ModifiedAt { get; set; }
+
+    [DataMember]
+    public Guid? TypeId { get; set; }
+
+    [DataMember]
+    public Guid? ImageUtilityId { get; set; }
+
+    [DataMember]
+    public Guid? ServiceId { get; set; }
 }

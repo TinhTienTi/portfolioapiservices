@@ -22,5 +22,11 @@ public class MappingProfile : Profile
 
         CreateMap<About, AboutDto>();
         CreateMap<AboutDto, About>();
+
+        CreateMap<ServiceDetail, ServiceDetailDto>();
+        CreateMap<ServiceDetailDto, ServiceDetail>();
+
+        CreateMap<Service, ServiceDto>();
+        CreateMap<ServiceDto, Service>();
     }
 }

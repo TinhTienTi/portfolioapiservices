@@ -37,6 +37,7 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<IGenericRepository<Categories, CategoriesDto>, GenericRepository<Categories, CategoriesDto>>();
             services.AddScoped<IGenericRepository<About, AboutDto>, GenericRepository<About, AboutDto>>();
             services.AddScoped<IGenericRepository<ImageUtilities, ImageUtilitiesDto>, GenericRepository<ImageUtilities, ImageUtilitiesDto>>();
+            services.AddScoped<IGenericRepository<ServiceDetail, ServiceDetailDto>, GenericRepository<ServiceDetail, ServiceDetailDto>>();
             services.AddScoped<IGenericRepository<Service, ServiceDto>, GenericRepository<Service, ServiceDto>>();
         }
 
@@ -46,6 +47,7 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<ILanguageBo, LanguageBo>();
             services.AddScoped<ICategoryBo, CategoryBo>();
             services.AddScoped<IAboutBo, AboutBo>();
+            services.AddScoped<IServiceDetailBo, ServiceDetailBo>();
 
             services.AddScoped<IProfileBo, ProfileBo>();
         }

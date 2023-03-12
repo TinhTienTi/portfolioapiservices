@@ -3,6 +3,7 @@ using PortfolioServices.Dto;
 using PortfolioServices.Dto.Others;
 using PortfolioServices.Model;
 using PortfolioServices.Repositories.Interfaces;
+using PortfolioServices.Utilities;
 
 namespace PortfolioServices.Api.Bo
 {
@@ -27,7 +28,7 @@ namespace PortfolioServices.Api.Bo
 
             var result = (from h in hrq
                           from c in crq.Where(c => c.Tid == h.TypeId).DefaultIfEmpty()
-                          from l in lrq.Where(l => l.Key == h.Tid && l.Object == "Home" && l.Code == languageId).DefaultIfEmpty()
+                          from l in lrq.Where(l => l.Key == h.Tid && l.Object == LanguageObjectConstants.Home && l.Code == languageId).DefaultIfEmpty()
                           orderby c.Priority ascending
                           select new HomeProfileResponse
                           {

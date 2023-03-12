@@ -20,6 +20,7 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<About> Abouts { get; set; }
     public virtual DbSet<ImageUtilities> ImageUtilities { get; set; }
     public virtual DbSet<Service> Service { get; set; }
+    public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -88,12 +89,22 @@ public partial class PortfoliServicesContext : DbContext
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
         });
 
+        modelBuilder.Entity<ServiceDetail>(entity =>
+        {
+            entity.ToTable("ServiceDetail");
+
+            entity.HasKey(e => e.Tid)
+                .HasName("PK__Service__C451DB3116E848A2");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
+        
         modelBuilder.Entity<Service>(entity =>
         {
             entity.ToTable("Service");
 
             entity.HasKey(e => e.Tid)
-                .HasName("PK__Service__C451DB3116E848A2");
+                .HasName("PK__Service__C451DB317F567A7C");
 
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
         });

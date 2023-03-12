@@ -1,19 +1,11 @@
-﻿using System.Runtime.Serialization;
+﻿namespace PortfolioServices.Model;
 
-namespace PortfolioServices.Dto;
-
-public class HomeDto
+public class ServiceDetail
 {
-
-    [DataMember]
     public Guid Tid { get; set; }
-
-    [DataMember]
     public DateTimeOffset? CreatedAt { get; set; }
-
-    [DataMember]
     public DateTimeOffset? ModifiedAt { get; set; }
-
-    [DataMember]
     public Guid? TypeId { get; set; }
+    public Guid? ImageUtilityId { get; set; }
+    public Guid? ServiceId { get; set; }
 }

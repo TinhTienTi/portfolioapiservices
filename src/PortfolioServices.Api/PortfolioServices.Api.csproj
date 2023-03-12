@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PortfolioServices.Profiles\PortfolioServices.Profiles.csproj" />
     <ProjectReference Include="..\PortfolioServices.Repositories\PortfolioServices.Repositories.csproj" />
+    <ProjectReference Include="..\PortfolioServices.Utilities\PortfolioServices.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
