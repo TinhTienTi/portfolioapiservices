@@ -28,5 +28,18 @@ namespace PortfolioServices.Api.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [HttpGet(nameof(About))]
+        public async Task<IActionResult> About()
+        {
+            try
+            {
+                return Ok(await profileBo.GetAboutInfoQueryableAsync("vi"));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

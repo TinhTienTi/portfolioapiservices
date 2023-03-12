@@ -16,6 +16,27 @@ namespace PortfolioServices.Api.Bo
             this.serviceProvider = serviceProvider;
         }
 
+        public async Task<IQueryable<AboutProfileResponse>> GetAboutInfoQueryableAsync(string languageId)
+        {
+            var lr = serviceProvider.GetService<IGenericRepository<Language, LanguageDto>>();
+
+            var arq = lr.GetQueryable<About>();
+            var lrq = lr.GetQueryable<Language>();
+            var crq = lr.GetQueryable<Categories>();
+
+            var result = (from about in arq
+                          from cate in crq.Where(c => c.Tid == about.TypeId).DefaultIfEmpty()
+                          from language in lrq.Where(l => l.Key == about.Tid && l.Object == LanguageObjectConstants.About && l.Code == languageId).DefaultIfEmpty()
+                          orderby cate.Priority ascending
+                          select new AboutProfileResponse
+                          {
+                              Value = language.Value
+                          });
+
+            return await Task.FromResult(result);
+
+        }
+
         public async Task<IQueryable<HomeProfileResponse>> GetHomeInfoQueryableAsync(string languageId)
         {
             var lr = serviceProvider.GetService<IGenericRepository<Language, LanguageDto>>();
