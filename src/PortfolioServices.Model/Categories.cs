@@ -7,4 +7,5 @@ public class Categories
     public DateTimeOffset? ModifiedAt { get; set; }
     public string Object { get; set; }
     public string Value { get; set; }
+    public Int16 Priority { get; set; }
 }

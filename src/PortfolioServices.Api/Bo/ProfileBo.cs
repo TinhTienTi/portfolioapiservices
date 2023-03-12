@@ -28,6 +28,7 @@ namespace PortfolioServices.Api.Bo
             var result = (from h in hrq
                           from c in crq.Where(c => c.Tid == h.TypeId).DefaultIfEmpty()
                           from l in lrq.Where(l => l.Key == h.Tid && l.Object == "Home" && l.Code == languageId).DefaultIfEmpty()
+                          orderby c.Priority ascending
                           select new HomeProfileResponse
                           {
                               HomeId = h.Tid,
