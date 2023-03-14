@@ -1,4 +1,6 @@
-﻿using PortfolioServices.Api.Bo;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using PortfolioServices.Api.Bo;
 using PortfolioServices.Api.Bo.Interfaces;
 using PortfolioServices.Context;
 using PortfolioServices.Dto;
@@ -12,7 +14,7 @@ namespace PortfolioServices.Api.Infracstructure
     {
         public static void AddConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContexts();
+            services.AddDbContexts(configuration);
 
             services.AddRepositories();
 
@@ -25,9 +27,12 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddSwagger();
         }
 
-        private static void AddDbContexts(this IServiceCollection services)
+        private static void AddDbContexts(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<PortfoliServicesContext>();
+            services.AddDbContext<PortfoliServicesContext>(options =>
+            {
+                options.UseSqlServer(configuration["PortfolioService:ConnectionString"]);
+            });
         }
 
         private static void AddRepositories(this IServiceCollection services)

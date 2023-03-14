@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PortfolioServices.Model\PortfolioServices.Model.csproj" />
+    <ProjectReference Include="..\PortfolioServices.Utilities\PortfolioServices.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

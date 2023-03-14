@@ -1,14 +1,15 @@
 using PortfolioServices.Api.Infracstructure;
+using PortfolioServices.Context;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Host.ConfigureAppConfiguration(configuration =>
 {
     configuration.AddJsonFile(@"json/databases.json", optional: true, reloadOnChange: true);
 })
     .UseContentRoot(Directory.GetCurrentDirectory());
+
+SeedData.InitializeDatabase(builder.Configuration["PortfolioService:ConnectionString"]);
 
 builder.Services.AddConfigureServices(builder.Configuration);
 

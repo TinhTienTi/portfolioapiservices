@@ -6,12 +6,9 @@ namespace PortfolioServices.Context;
 
 public partial class PortfoliServicesContext : DbContext
 {
-    private readonly IConfiguration configuration;
-
-    public PortfoliServicesContext(DbContextOptions<PortfoliServicesContext> options, IConfiguration configuration)
+    public PortfoliServicesContext(DbContextOptions<PortfoliServicesContext> options)
         : base(options)
     {
-        this.configuration = configuration;
     }
 
     public virtual DbSet<Categories> Categories { get; set; }
@@ -19,13 +16,13 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<Language> Languages { get; set; }
     public virtual DbSet<About> Abouts { get; set; }
     public virtual DbSet<ImageUtilities> ImageUtilities { get; set; }
-    public virtual DbSet<Service> Service { get; set; }
-    public virtual DbSet<ServiceDetail> ServiceDetail { get; set; }
+    public virtual DbSet<Service> Services { get; set; }
+    public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(configuration["PortfolioService:ConnectionString"]);
-    }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlServer(configuration["PortfolioService:ConnectionString"]);
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

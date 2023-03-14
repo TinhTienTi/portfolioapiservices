@@ -1,6 +1,7 @@
 {
   "PortfolioService": {
     "Provider": "SqlServer",
-    "ConnectionString": "Server=DESKTOP-3DV7K6B;TrustServerCertificate=true;User ID=DESKTOP-3DV7K6B\\T1NH;Database=Profiles;Trusted_Connection=True;"
+    //"ConnectionString": "Server=DESKTOP-3DV7K6B;TrustServerCertificate=true;User ID=DESKTOP-3DV7K6B\\T1NH;Database=Profiles;Trusted_Connection=True;"
+    "ConnectionString": "Server=10.86.62.225;TrustServerCertificate=true;User ID=sa;Password=123456A@a;Database=Profiles;"
   }
 }
