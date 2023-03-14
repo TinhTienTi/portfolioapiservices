@@ -9,7 +9,7 @@ builder.Host.ConfigureAppConfiguration(configuration =>
 })
     .UseContentRoot(Directory.GetCurrentDirectory());
 
-SeedData.InitializeDatabase(builder.Configuration["PortfolioService:ConnectionString"]);
+await SeedData.InitializeDatabase(builder.Configuration["PortfolioService:ConnectionString"]);
 
 builder.Services.AddConfigureServices(builder.Configuration);
 
