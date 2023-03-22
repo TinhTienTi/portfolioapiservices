@@ -66,27 +66,18 @@ namespace PortfolioServices.Api.Bo
             var srq = lr.GetQueryable<Service>();
             var sdrq = lr.GetQueryable<ServiceDetail>();
             var lrq = lr.GetQueryable<Language>();
-            var crq = lr.GetQueryable<Categories>();
 
-            var result = (from sd in sdrq
-                          from c in crq.Where(c => c.Tid == sd.TypeId && c.Object == LanguageObjectConstants.ServiceDetail)
-                          from l in lrq.Where(l => l.Key == sd.Tid && l.Object == LanguageObjectConstants.ServiceDetail && l.Code == languageId)
-                          select new
+            var result = (from s in srq
+                          from sd in sdrq.Where(x => x.ServiceId == s.Tid)
+                          from l in lrq.Where(x => x.Key == s.Tid && x.Object == LanguageObjectConstants.Service && x.Code == languageId)
+                          from l2 in lrq.Where(x => x.Key == sd.Tid && x.Object == LanguageObjectConstants.ServiceDetail && x.Code == languageId)
+                          select new ServiceProfileResponseDto
                           {
-                              sd.Tid,
-                              sd.ServiceId,
-                              Category = c.Value,
-                              Language = l.Value
-                          }).ToList();
+                              Title = l.Value,
+                              SubTitle = l2.Value
+                          });
 
-            var query = result
-                    .GroupBy(c => c.ServiceId)
-                    .Select(g => new {
-                        CustId = g.Key,
-                        Title = g.Where(c => c.ServiceId == g.Key)
-                    });
-
-            return null;
+            return await Task.FromResult(result);
         }
     }
 }
