@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PortfolioServices.Api.Bo.Interfaces;
+using PortfolioServices.Utilities;
 
 namespace PortfolioServices.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace PortfolioServices.Api.Controllers
         {
             try
             {
-                return Ok(await profileBo.GetHomeInfoQueryableAsync("vi"));
+                return Ok(await profileBo.GetHomeInfoQueryableAsync(LanguageCodeConstants.VIET_NAM));
             }
             catch (Exception ex)
             {
@@ -34,7 +35,21 @@ namespace PortfolioServices.Api.Controllers
         {
             try
             {
-                return Ok(await profileBo.GetAboutInfoQueryableAsync("vi"));
+                return Ok(await profileBo.GetAboutInfoQueryableAsync(LanguageCodeConstants.VIET_NAM));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        [HttpGet(nameof(Service))]
+        public async Task<IActionResult> Service()
+        {
+            try
+            {
+                return Ok(await profileBo.GetServiceInfoQueryableAsync(LanguageCodeConstants.VIET_NAM));
             }
             catch (Exception ex)
             {

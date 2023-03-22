@@ -4,8 +4,10 @@ namespace PortfolioServices.Api.Bo.Interfaces
 {
     public interface IProfileBo
     {
-        Task<IQueryable<AboutProfileResponse>> GetAboutInfoQueryableAsync(string languageId);
+        Task<IQueryable<ProfileResponseDto>> GetAboutInfoQueryableAsync(string languageId);
 
-        Task<IQueryable<HomeProfileResponse>> GetHomeInfoQueryableAsync(string languageId);
+        Task<IQueryable<ProfileResponseDto>> GetHomeInfoQueryableAsync(string languageId);
+
+        Task<IQueryable<ServiceProfileResponseDto>> GetServiceInfoQueryableAsync(string languageId);
     }
 }

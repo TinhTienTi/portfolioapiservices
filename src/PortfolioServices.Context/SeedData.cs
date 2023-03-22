@@ -24,6 +24,7 @@ namespace PortfolioServices.Context
 
             if (!await ctx.Database.EnsureCreatedAsync())
             {
+                await ctx.Database.MigrateAsync();
                 await EnsureData(ctx);
             }
         }
