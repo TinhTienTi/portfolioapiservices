@@ -44,6 +44,8 @@ namespace PortfolioServices.Api.Infracstructure
             services.AddScoped<IGenericRepository<ImageUtilities, ImageUtilitiesDto>, GenericRepository<ImageUtilities, ImageUtilitiesDto>>();
             services.AddScoped<IGenericRepository<ServiceDetail, ServiceDetailDto>, GenericRepository<ServiceDetail, ServiceDetailDto>>();
             services.AddScoped<IGenericRepository<Service, ServiceDto>, GenericRepository<Service, ServiceDto>>();
+            services.AddScoped<IGenericRepository<Client, ClientDto>, GenericRepository<Client, ClientDto>>();
+            services.AddScoped<IGenericRepository<ClientComment, ClientCommentDto>, GenericRepository<ClientComment, ClientCommentDto>>();
         }
 
         private static void AddBo(this IServiceCollection services)

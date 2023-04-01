@@ -40,6 +40,11 @@ namespace PortfolioServices.Api.Bo
             return await Task.FromResult(result);
         }
 
+        public Task<IQueryable<ProfileResponseDto>> GetClientInfoQueryableAsync(string languageId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IQueryable<ProfileResponseDto>> GetHomeInfoQueryableAsync(string languageId)
         {
             var lr = serviceProvider.GetService<IGenericRepository<Language, LanguageDto>>();

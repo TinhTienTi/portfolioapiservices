@@ -18,6 +18,9 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<ImageUtilities> ImageUtilities { get; set; }
     public virtual DbSet<Service> Services { get; set; }
     public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
+    public virtual DbSet<Client> Clients { get; set; }
+    public virtual DbSet<ClientComment> ClientComments { get; set; }
+
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     //{
@@ -106,10 +109,26 @@ public partial class PortfoliServicesContext : DbContext
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
         });
 
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.ToTable("Client");
+            
+            entity.HasKey(e => e.Tid).HasName("PK__Client__C451DB3133FE2D2E");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
+
+        modelBuilder.Entity<ClientComment>(entity =>
+        {
+            entity.ToTable("ClientComment");
+
+            entity.HasKey(e => e.Tid).HasName("PK__ClientCo__C451DB31158A6414");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
 }
