@@ -7,4 +7,5 @@ public class ImageUtilities
     public DateTimeOffset? ModifiedAt { get; set; }
     public string Name { get; set; }
     public string ObjectName { get; set; }
+    public Guid GroupId { get; set; }
 }

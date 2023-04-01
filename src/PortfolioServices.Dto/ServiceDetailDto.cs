@@ -18,7 +18,7 @@ public class ServiceDetailDto
     public Guid? TypeId { get; set; }
 
     [DataMember]
-    public Guid? ImageUtilityId { get; set; }
+    public Guid? ImageGroupId { get; set; }
 
     [DataMember]
     public Guid? ServiceId { get; set; }

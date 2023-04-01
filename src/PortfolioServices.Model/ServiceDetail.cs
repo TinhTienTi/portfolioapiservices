@@ -6,6 +6,6 @@ public class ServiceDetail
     public DateTimeOffset? CreatedAt { get; set; }
     public DateTimeOffset? ModifiedAt { get; set; }
     public Guid? TypeId { get; set; }
-    public Guid? ImageUtilityId { get; set; }
+    public Guid? ImageGroupId { get; set; }
     public Guid? ServiceId { get; set; }
 }

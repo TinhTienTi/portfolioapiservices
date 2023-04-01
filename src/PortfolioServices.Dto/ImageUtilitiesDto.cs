@@ -19,4 +19,7 @@ public class ImageUtilitiesDto
 
     [DataMember]
     public string ObjectName { get; set; }
+
+    [DataMember]
+    public string GroupId { get; set; }
 }

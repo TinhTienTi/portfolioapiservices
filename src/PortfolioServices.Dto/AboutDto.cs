@@ -17,5 +17,5 @@ public class AboutDto
     public Guid? TypeId { get; set; }
 
     [DataMember]
-    public Guid? ImageUtilityId { get; set; }
+    public Guid? ImageGroupId { get; set; }
 }

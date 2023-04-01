@@ -6,5 +6,5 @@ public class About
     public DateTimeOffset? CreatedAt { get; set; }
     public DateTimeOffset? ModifiedAt { get; set; }
     public Guid? TypeId { get; set; }
-    public Guid? ImageUtilityId { get; set; }
+    public Guid? ImageGroupId { get; set; }
 }
