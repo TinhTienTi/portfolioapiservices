@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using PortfolioServices.Model;
 
 namespace PortfolioServices.Context;
@@ -20,6 +19,7 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
     public virtual DbSet<Client> Clients { get; set; }
     public virtual DbSet<ClientComment> ClientComments { get; set; }
+    public virtual DbSet<SocialLink> SocialLink { get; set; }
 
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -125,6 +125,17 @@ public partial class PortfoliServicesContext : DbContext
             entity.HasKey(e => e.Tid).HasName("PK__ClientCo__C451DB31158A6414");
 
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+        });
+
+        modelBuilder.Entity<SocialLink>(entity =>
+        {
+            entity.ToTable("SocialLink");
+
+            entity.HasKey(e => e.Tid).HasName("PK__SocicalL__C451DB319E559516");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+
+            entity.Property(e => e.Url).IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);
