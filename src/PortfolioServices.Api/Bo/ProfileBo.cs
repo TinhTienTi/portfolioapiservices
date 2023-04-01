@@ -40,9 +40,33 @@ namespace PortfolioServices.Api.Bo
             return await Task.FromResult(result);
         }
 
-        public Task<IQueryable<ProfileResponseDto>> GetClientInfoQueryableAsync(string languageId)
+        public async Task<IQueryable<ClientProfileResponseDto>> GetClientInfoQueryableAsync(string languageId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cr = serviceProvider.GetService<IGenericRepository<Client, ClientDto>>();
+
+                var crq = cr.GetQueryable<Client>();
+                var ccrq = cr.GetQueryable<ClientComment>();
+                var lrq = cr.GetQueryable<Language>();
+                var irq = cr.GetQueryable<ImageUtilities>();
+
+                var result = (from c in crq
+                              from cc in ccrq.Where(cc => cc.ClientId == c.Tid)
+                              from img in irq.Where(img=>img.GroupId == c.ImageGroupId).DefaultIfEmpty()
+                              from l in lrq.Where(l => l.Key == cc.Tid && l.Object == LanguageObjectConstants.ClientComment && l.Code == languageId).DefaultIfEmpty()
+                              select new ClientProfileResponseDto
+                              {
+                                  ImageUrl = img.Name ,
+                                  Client = c.Name,
+                                  Comment = l.Value
+                              });
+                return await Task.FromResult(result);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<IQueryable<ProfileResponseDto>> GetHomeInfoQueryableAsync(string languageId)

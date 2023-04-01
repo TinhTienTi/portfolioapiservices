@@ -6,7 +6,7 @@ namespace PortfolioServices.Api.Bo.Interfaces
     {
         Task<IQueryable<ProfileResponseDto>> GetAboutInfoQueryableAsync(string languageId);
 
-        Task<IQueryable<ProfileResponseDto>> GetClientInfoQueryableAsync(string languageId);
+        Task<IQueryable<ClientProfileResponseDto>> GetClientInfoQueryableAsync(string languageId);
 
         Task<IQueryable<ProfileResponseDto>> GetHomeInfoQueryableAsync(string languageId);
 

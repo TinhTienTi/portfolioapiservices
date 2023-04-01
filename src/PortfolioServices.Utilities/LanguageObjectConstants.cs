@@ -9,4 +9,6 @@ public struct LanguageObjectConstants
     public const string Service = "Service";
 
     public const string ServiceDetail = "ServiceDetail";
+
+    public const string ClientComment = "ClientComment";
 }

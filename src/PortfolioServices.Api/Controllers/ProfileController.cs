@@ -43,6 +43,18 @@ namespace PortfolioServices.Api.Controllers
             }
         }
 
+        [HttpGet(nameof(Client))]
+        public async Task<IActionResult> Client()
+        {
+            try
+            {
+                return Ok(await profileBo.GetClientInfoQueryableAsync(LanguageCodeConstants.VIET_NAM));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         [HttpGet(nameof(Service))]
         public async Task<IActionResult> Service()
