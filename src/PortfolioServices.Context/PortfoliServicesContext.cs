@@ -20,6 +20,7 @@ public partial class PortfoliServicesContext : DbContext
     public virtual DbSet<Client> Clients { get; set; }
     public virtual DbSet<ClientComment> ClientComments { get; set; }
     public virtual DbSet<SocialLink> SocialLink { get; set; }
+    public virtual DbSet<Portfolio> Portfolio { get; set; }
 
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -136,6 +137,19 @@ public partial class PortfoliServicesContext : DbContext
             entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
 
             entity.Property(e => e.Url).IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Portfolio>(entity =>
+        {
+            entity.ToTable("Portfolio");
+
+            entity.HasKey(e => e.Tid).HasName("PK__Portfoli__C451DB3160CD4011");
+
+            entity.Property(e => e.Tid).HasDefaultValueSql("(newid())");
+
+            entity.Property(e => e.SubTitle).HasDefaultValueSql("(newid())");
+
+            entity.Property(e => e.Title).HasDefaultValueSql("(newid())");
         });
 
         OnModelCreatingPartial(modelBuilder);
