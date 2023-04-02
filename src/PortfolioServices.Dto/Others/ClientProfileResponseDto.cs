@@ -2,7 +2,7 @@
 
 public class ClientProfileResponseDto
 {
-    public string ImageUrl { get; set; }
+    public string ImgUrl { get; set; }
 
     public string Comment { get; set; }
 

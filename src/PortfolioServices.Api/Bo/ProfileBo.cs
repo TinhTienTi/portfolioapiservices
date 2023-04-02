@@ -53,11 +53,11 @@ namespace PortfolioServices.Api.Bo
 
                 var result = (from c in crq
                               from cc in ccrq.Where(cc => cc.ClientId == c.Tid)
-                              from img in irq.Where(img=>img.GroupId == c.ImageGroupId).DefaultIfEmpty()
+                              from img in irq.Where(img => img.GroupId == c.ImageGroupId).DefaultIfEmpty()
                               from l in lrq.Where(l => l.Key == cc.Tid && l.Object == LanguageObjectConstants.ClientComment && l.Code == languageId).DefaultIfEmpty()
                               select new ClientProfileResponseDto
                               {
-                                  ImageUrl = img.Name ,
+                                  ImgUrl = img.Name,
                                   Client = c.Name,
                                   Comment = l.Value
                               });
@@ -88,6 +88,35 @@ namespace PortfolioServices.Api.Bo
                           });
 
             return await Task.FromResult(result);
+        }
+
+        public async Task<IQueryable<ProfileResponseDto>> GetPortfolioInfoQueryableAsync(string languageId)
+        {
+            try
+            {
+                var lr = serviceProvider.GetService<IGenericRepository<Language, LanguageDto>>();
+
+                var prq = lr.GetQueryable<Portfolio>();
+                var lrq = lr.GetQueryable<Language>();
+                var irq = lr.GetQueryable<ImageUtilities>();
+
+                var result = (from p in prq
+                              from img in irq.Where(img => img.GroupId == p.ImageGroupId).DefaultIfEmpty()
+                              from l in lrq.Where(l => l.Key == p.Title && l.Object == LanguageObjectConstants.Portfolio && l.Code == languageId).DefaultIfEmpty()
+                              from l2 in lrq.Where(l2 => l2.Key == p.SubTitle && l2.Object == LanguageObjectConstants.Portfolio && l2.Code == languageId).DefaultIfEmpty()
+                              select new
+                              {
+                                  Title = l.Value,
+                                  SubTitle = l2.Value,
+                                  ImgUrl = img.Name
+                              });
+
+                return await Task.FromResult(result);
+            }
+            catch
+            {
+                throw
+            }
         }
 
         public async Task<IQueryable<ServiceProfileResponseDto>> GetServiceInfoQueryableAsync(string languageId)

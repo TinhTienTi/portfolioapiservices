@@ -10,6 +10,8 @@ namespace PortfolioServices.Api.Bo.Interfaces
 
         Task<IQueryable<ProfileResponseDto>> GetHomeInfoQueryableAsync(string languageId);
 
+        Task<IQueryable<PortfolioProfileResponseDto>> GetPortfolioInfoQueryableAsync(string languageId);
+
         Task<IQueryable<ServiceProfileResponseDto>> GetServiceInfoQueryableAsync(string languageId);
     }
 }
