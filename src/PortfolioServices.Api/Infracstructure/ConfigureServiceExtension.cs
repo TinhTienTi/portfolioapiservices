@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using PortfolioServices.Api.Bo;
 using PortfolioServices.Api.Bo.Interfaces;
 using PortfolioServices.Context;
