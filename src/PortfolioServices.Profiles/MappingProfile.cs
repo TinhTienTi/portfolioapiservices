@@ -34,5 +34,8 @@ public class MappingProfile : Profile
 
         CreateMap<ClientComment, ClientCommentDto>();
         CreateMap<ClientCommentDto, ClientComment>();
+
+        CreateMap<Portfolio, PortfolioDto>();
+        CreateMap<PortfolioDto, Portfolio>();
     }
 }
