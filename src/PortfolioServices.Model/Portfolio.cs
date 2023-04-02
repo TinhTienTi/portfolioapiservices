@@ -8,5 +8,6 @@
         public Guid? ImageGroupId { get; set; }
         public Guid? Title { get; set; }
         public Guid? SubTitle { get; set; }
+        public Guid? Address { get; set; }
     }
 }

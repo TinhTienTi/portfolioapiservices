@@ -21,4 +21,7 @@ public class PortfolioDto
 
     [DataMember]
     public Guid? SubTitle { get; set; }
+
+    [DataMember]
+    public Guid? Address { get; set; }
 }

@@ -104,10 +104,12 @@ namespace PortfolioServices.Api.Bo
                               from img in irq.Where(img => img.GroupId == p.ImageGroupId).DefaultIfEmpty()
                               from l in lrq.Where(l => l.Key == p.Title && l.Object == LanguageObjectConstants.Portfolio && l.Code == languageId).DefaultIfEmpty()
                               from l2 in lrq.Where(l2 => l2.Key == p.SubTitle && l2.Object == LanguageObjectConstants.Portfolio && l2.Code == languageId).DefaultIfEmpty()
+                              from la in lrq.Where(la => la.Key == p.Address && la.Object == LanguageObjectConstants.Portfolio && la.Code == languageId).DefaultIfEmpty()
                               select new PortfolioProfileResponseDto
                               {
                                   Title = l.Value,
                                   SubTitle = l2.Value,
+                                  Address = la.Value,
                                   ImgUrl = img.Name
                               });
 
