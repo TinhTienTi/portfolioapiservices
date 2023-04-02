@@ -90,7 +90,7 @@ namespace PortfolioServices.Api.Bo
             return await Task.FromResult(result);
         }
 
-        public async Task<IQueryable<ProfileResponseDto>> GetPortfolioInfoQueryableAsync(string languageId)
+        public async Task<IQueryable<PortfolioProfileResponseDto>> GetPortfolioInfoQueryableAsync(string languageId)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace PortfolioServices.Api.Bo
                               from img in irq.Where(img => img.GroupId == p.ImageGroupId).DefaultIfEmpty()
                               from l in lrq.Where(l => l.Key == p.Title && l.Object == LanguageObjectConstants.Portfolio && l.Code == languageId).DefaultIfEmpty()
                               from l2 in lrq.Where(l2 => l2.Key == p.SubTitle && l2.Object == LanguageObjectConstants.Portfolio && l2.Code == languageId).DefaultIfEmpty()
-                              select new
+                              select new PortfolioProfileResponseDto
                               {
                                   Title = l.Value,
                                   SubTitle = l2.Value,
@@ -115,7 +115,7 @@ namespace PortfolioServices.Api.Bo
             }
             catch
             {
-                throw
+                throw;
             }
         }
 

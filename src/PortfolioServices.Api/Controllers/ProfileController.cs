@@ -56,6 +56,19 @@ namespace PortfolioServices.Api.Controllers
             }
         }
 
+        [HttpGet(nameof(Portfolio))]
+        public async Task<IActionResult> Portfolio()
+        {
+            try
+            {
+                return Ok(await profileBo.GetPortfolioInfoQueryableAsync(LanguageCodeConstants.VIET_NAM));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         [HttpGet(nameof(Service))]
         public async Task<IActionResult> Service()
         {
